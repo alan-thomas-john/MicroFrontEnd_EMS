@@ -4,6 +4,7 @@ import { ConfirmationComponent } from './confirmation.component';
 import { RegistrationFormComponent } from '../registration-form/registration-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { StateModule } from 'projects/state/src/public-api';
 
 
 
@@ -13,12 +14,15 @@ import { RouterModule } from '@angular/router';
     // RegistrationFormComponent
   ],
   imports: [
-    CommonModule,BrowserModule,RouterModule.forChild([
+    CommonModule,
+    BrowserModule,
+    RouterModule.forChild([
       {
         path: '',
         component: ConfirmationComponent
       }
-    ])
+    ]),
+    StateModule
   ]
 })
 export class ConfirmationModule { }

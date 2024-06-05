@@ -21,7 +21,7 @@ export class ConfirmationComponent {
   //   // },5000);
   // }
   ngOnInit(){
-    console.log(this.employeeData)
+    console.log("employeedata",this.employeeData)
   }
   onConfirm() {
     this.confirmed.emit();

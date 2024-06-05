@@ -7,9 +7,14 @@ export const addEmployee = createAction(
 );
 
 export const loadEmployees = createAction(
-    '[Employee] Load Employees');
+    '[Employee] Load Employees',
 
+);
+export const loadEmployeesSuccess = createAction(
+    '[Employee] Load Employees Success',
+    props<{ employee: Employee[] }>()  
+  );
 export const deleteEmployee = createAction(
     '[Employee] Delete Employee',
-    props<{ emailId: string }>() // Assuming emailId is unique
+    props<{ emailId: string }>() 
 );

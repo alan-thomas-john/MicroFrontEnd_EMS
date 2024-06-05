@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StateModule } from 'projects/state/src/public-api';
+import { employeeReducer } from 'projects/state/src/lib/employee.reducer';
 
 
 @NgModule({
@@ -24,9 +25,9 @@ import { StateModule } from 'projects/state/src/public-api';
     AppRoutingModule,
     RegistrationFormModule,
     ReactiveFormsModule,
-    // StoreModule.forRoot(employeeReducer),
-    // EffectsModule.forRoot([]),
-    // StateModule
+    StoreModule.forRoot(employeeReducer),
+    EffectsModule.forRoot([]),
+  StateModule
     
 
   ],
