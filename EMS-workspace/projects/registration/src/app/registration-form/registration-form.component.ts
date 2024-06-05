@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent implements OnInit{
-  
+  employeeeDetails:any;
   registrationForm!: FormGroup;
-  success: boolean=false;
+  dialogBox: boolean=false;
   @Output()registerForm = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder,private router: Router) {}
@@ -26,10 +26,19 @@ export class RegistrationFormComponent implements OnInit{
   onSubmit(){
     if (this.registrationForm.valid) {
       console.log('Form is valid. Emitting event with form data:', this.registrationForm.value);
-      this.registerForm.emit(this.registrationForm.value);
-      this.success=true;
+      // this.registerForm.emit(this.registrationForm.value);
+      this.employeeeDetails=this.registrationForm.value
+      this.dialogBox=true;
     } else {
       console.log('Form is invalid.');
     }
+  }
+
+  onDialogConfirmed(){
+    console.log("fai")
+  }
+  onDialogCancelled(){
+    this.dialogBox=false;
+    
   }
 }

@@ -1,7 +1,15 @@
-<app-registration-form (registerForm)="onRegisterForm($event)"></app-registration-form>
+
 <!-- <div *ngIf="successMessage" class="alert alert-success">
     {{ successMessage }}
 </div> -->
-<div>
-    <p>success</p>
-</div>
+
+<div class="dialog-container">
+    <div class="dialog-box">
+        <p>Name : {{employeeData.name}}</p>
+        <p>Email: {{employeeData.emailId}}</p>
+        <p>Position: {{employeeData.position}}</p>
+  
+      <button class="cart-btn" (click)="onConfirm()">Ok</button>
+      <button class="cart-btn-cancel" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>

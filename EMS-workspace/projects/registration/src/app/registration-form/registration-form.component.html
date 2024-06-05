@@ -15,4 +15,5 @@
       <button type="submit" class="btn primary-btn">Register</button>
     </form>
   </div>
-  <app-confirmation *ngIf="success"></app-confirmation>
+  <app-confirmation *ngIf="dialog-box" [employeeData]="employeeeDetails" (confirmed)="onDialogConfirmed()"
+  (cancelled)="onDialogCancelled()" ></app-confirmation>
