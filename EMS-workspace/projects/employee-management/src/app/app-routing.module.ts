@@ -4,7 +4,7 @@ import { SearchComponent } from './search/search.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 
 const REGISTRATION_URL = "http://localhost:4300/registerEntry.js";
-const VIEW_EMPLOYEES_URL = "http://localhost:4301/viewEntry.js";
+const VIEW_EMPLOYEES_URL = "http://localhost:4201/viewEntry.js";
 
 const routes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },

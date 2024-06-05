@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { EmployeeListComponent } from './employee-list.component';
+import { StateModule } from 'projects/state/src/public-api';
 
 
 
@@ -18,7 +19,8 @@ import { EmployeeListComponent } from './employee-list.component';
         path:'',
         component:EmployeeListComponent
       }
-    ])
+    ]),
+    StateModule
   ]
 })
 export class EmployeeListModule { }

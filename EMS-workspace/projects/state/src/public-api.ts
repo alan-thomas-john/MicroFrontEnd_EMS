@@ -5,3 +5,4 @@
 export * from './lib/state.service';
 export * from './lib/state.component';
 export * from './lib/state.module';
+//do exports of action,reducers,etc

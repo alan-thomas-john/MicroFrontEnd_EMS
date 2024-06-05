@@ -5,6 +5,9 @@ import { AppRoutingModule, routeCompArr } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StateModule } from 'projects/state/src/public-api';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // StoreModule.forRoot(employeeReducer),
+    // EffectsModule.forRoot([]),
+    // StateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

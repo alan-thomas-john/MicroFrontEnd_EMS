@@ -39,7 +39,7 @@ module.exports = {
         // For hosts (please adjust)
         remotes: {
             "registration": "registration@http://localhost:4300/registerEntry.js",
-            "viewEmployees": "viewEmployees@http://localhost:4301/viewEntry.js",
+            "viewEmployees": "viewEmployees@http://localhost:4201/viewEntry.js",
 
         },
 
@@ -48,6 +48,8 @@ module.exports = {
           "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@ngrx/store": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
+          "@ngrx/effects": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
 
           ...sharedMappings.getDescriptors()
         })

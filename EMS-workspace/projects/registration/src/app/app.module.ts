@@ -8,6 +8,9 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { ConfirmationModule } from './confirmation/confirmation.module';
 import { RegistrationFormModule } from './registration-form/registration-form.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StateModule } from 'projects/state/src/public-api';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     RegistrationFormModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // StoreModule.forRoot(employeeReducer),
+    // EffectsModule.forRoot([]),
+    // StateModule
     
 
   ],
