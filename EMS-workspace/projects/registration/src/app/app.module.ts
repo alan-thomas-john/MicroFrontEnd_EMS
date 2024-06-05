@@ -7,6 +7,7 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 //import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ConfirmationModule } from './confirmation/confirmation.module';
 import { RegistrationFormModule } from './registration-form/registration-form.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RegistrationFormModule } from './registration-form/registration-form.mo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RegistrationFormModule
+    RegistrationFormModule,
+    ReactiveFormsModule
     
 
   ],

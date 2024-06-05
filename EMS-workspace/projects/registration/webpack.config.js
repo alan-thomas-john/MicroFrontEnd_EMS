@@ -31,7 +31,7 @@ module.exports = {
 
         // For remotes (please adjust)
         name: "registration",
-        filename: "remoteEntry.js",
+        filename: "registerEntry.js",
         exposes: {
             './RegistrationFormModule': './projects/registration/src/app/registration-form/registration-form.module.ts',
         },        

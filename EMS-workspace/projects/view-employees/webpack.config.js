@@ -11,7 +11,8 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "viewEmployees",
-    publicPath: "auto"
+    publicPath: "auto",
+    scriptType: "text/javascript"
   },
   optimization: {
     runtimeChunk: false
@@ -26,14 +27,14 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
+        // library: { type: "module" },
 
         // For remotes (please adjust)
-        // name: "viewEmployees",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './projects/view-employees/src/app/app.component.ts',
-        // },        
+        name: "viewEmployees",
+        filename: "viewEntry.js",
+        exposes: {
+            './EmployeeListModule': './projects/view-employees/src/app/employee-list/employee-list.module.ts',
+        },        
         
         // For hosts (please adjust)
         // remotes: {

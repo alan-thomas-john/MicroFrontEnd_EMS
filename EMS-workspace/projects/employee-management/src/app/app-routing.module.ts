@@ -3,19 +3,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 
-const REGISTRATION_URL = "http://localhost:4300/remoteEntry.js";
-const VIEW_EMPLOYEES_URL = "http://localhost:4201/remoteEntry2.js";
+const REGISTRATION_URL = "http://localhost:4300/registerEntry.js";
+const VIEW_EMPLOYEES_URL = "http://localhost:4301/viewEntry.js";
 
 const routes: Routes = [
-  {path:'', redirectTo : '/search', pathMatch: 'full' },
-  {path: 'search',component:SearchComponent},
-  {path: 'registrationForm',
+  { path: '', redirectTo: '/search', pathMatch: 'full' },
+  { path: 'search', component: SearchComponent },
+  {
+    path: 'registrationForm',
     loadChildren: () => {
       return loadRemoteModule({
         remoteEntry: REGISTRATION_URL,
         remoteName: "registration",
-        exposedModule: "./RegistrationFormModule " 
-      }).then(m => m.RegistrationFormModule ).catch(err => console.log(err));
+        exposedModule: "./RegistrationFormModule"
+      }).then(m => m.RegistrationFormModule).catch(err => console.log(err));
+    }
+  },
+  {
+    path: 'viewEmployee',
+    loadChildren: () => {
+      return loadRemoteModule({
+        remoteEntry: VIEW_EMPLOYEES_URL,
+        remoteName: "viewEmployees",
+        exposedModule: "./EmployeeListModule"
+      }).then(m => m.EmployeeListModule).catch(err => console.log(err));
     }
   },
 ];
