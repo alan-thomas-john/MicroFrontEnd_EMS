@@ -1,5 +1,5 @@
 <h2>Employee List</h2>
-<div *ngIf="employees$ | async as employees">
+<div *ngIf="(employees$ | async) as employees">
     <ul>
         <li *ngFor="let employee of employees">
             {{employee.name}} - {{employee.emailId}} - {{employee.position}}

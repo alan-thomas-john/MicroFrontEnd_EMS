@@ -28,16 +28,16 @@ export class EmployeeEffects {
         ), { dispatch: false }
     );
 
-    loadEmployees$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(loadEmployees),
-            mergeMap(() => {
-                const employees = this.storageService.getItem('employees') || [];
-                console.log('Loaded employees:', employees);
-                return of(loadEmployeesSuccess({ employees }));
-            })
-        )
-    );
+    // loadEmployees$ = createEffect(() =>
+    //     this.actions$.pipe(
+    //         ofType(loadEmployees),
+    //         mergeMap(() => {
+    //             const employees = this.storageService.getItem('employees') || [];
+    //             console.log('Loaded employees:', employees);
+    //             return of(loadEmployeesSuccess({ employees }));
+    //         })
+    //     )
+    // );
 
     syncEmployees$ = createEffect(() =>
         this.actions$.pipe(

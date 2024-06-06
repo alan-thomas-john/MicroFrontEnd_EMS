@@ -8,7 +8,7 @@ const VIEW_EMPLOYEES_URL = "http://localhost:4201/viewEntry.js";
 
 const routes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },
-  { path: 'search', component: SearchComponent },
+  // { path: 'search', component: SearchComponent },
   {
     path: 'registrationForm',
     loadChildren: () => {
