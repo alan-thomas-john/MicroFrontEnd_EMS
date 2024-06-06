@@ -42,7 +42,7 @@ export const employeeReducer = createReducer(
     
     on(searchEmployees, (state, { searchTerm }) => {
         const filteredEmployees = state.employees.filter(employee =>
-          employee.name.toLowerCase().includes(searchTerm.toLowerCase())
+          employee.name.toLowerCase().startsWith(searchTerm.toLowerCase())
         );
         return {
           ...state,
