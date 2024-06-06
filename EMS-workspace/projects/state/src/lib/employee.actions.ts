@@ -12,9 +12,34 @@ export const loadEmployees = createAction(
 );
 export const loadEmployeesSuccess = createAction(
     '[Employee] Load Employees Success',
-    props<{ employee: Employee[] }>()  
-  );
-export const deleteEmployee = createAction(
-    '[Employee] Delete Employee',
-    props<{ emailId: string }>() 
+    props<{ employees: Employee[] }>()
 );
+// export const deleteEmployee = createAction(
+//     '[Employee] Delete Employee',
+//     props<{ emailId: string }>()
+// );
+
+export const searchEmployees = createAction(
+    '[Employee] Search Employees',
+    props<{ searchTerm: string }>()
+);
+
+export const setSearchResults = createAction(
+    '[Employee] Set Search Results',
+    props<{ employees: Employee[] }>()
+  );
+  
+export const deleteEmployees = createAction(
+    '[Employee] Delete Employee',
+    props<{ emailId: string }>()
+  );
+  
+  export const deleteEmployeeSuccess = createAction(
+    '[Employee] Delete Employee Success',
+    props<{ emailId: string }>()
+  );
+  
+  export const deleteEmployeeFailure = createAction(
+    '[Employee] Delete Employee Failure',
+    props<{ error: any }>()
+  );

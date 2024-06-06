@@ -1,12 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { StorageService } from 'projects/session-local-storage/projects/storage-service/src/public-api';
-import { addEmployee, loadEmployees } from 'projects/state/src/lib/employee.actions';
-import { Employee } from 'projects/state/src/lib/employee.model';
-import { EmployeeState } from 'projects/state/src/lib/employee.reducer';
 import { Observable } from 'rxjs';
+import { Employee } from 'projects/state/src/lib/employee.model';
+import { addEmployee } from 'projects/state/src/lib/employee.actions';
+import { EmployeeState } from 'projects/state/src/lib/employee.reducer';
+import { selectAllEmployees } from 'projects/state/src/lib/employee.selectors';
 
 @Component({
   selector: 'app-registration-form',
@@ -14,13 +13,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent implements OnInit {
-  employeeeDetails: any;
+  employeeDetails: any;
   registrationForm!: FormGroup;
   dialogBox: boolean = false;
 
   @Output() registerForm = new EventEmitter<any>();
   employees$: Observable<Employee[]> | undefined;
-  constructor(private fb: FormBuilder, private router: Router, private store: Store<{ employees: EmployeeState }>, private storage: StorageService) { }
+
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<{ employees: EmployeeState }>
+  ) {}
+
   ngOnInit() {
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
@@ -28,32 +32,23 @@ export class RegistrationFormComponent implements OnInit {
       position: ['', Validators.required]
     });
 
+    this.employees$ = this.store.pipe(select(selectAllEmployees));
   }
-
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      console.log('Form is valid. Emitting event with form data:', this.registrationForm.value);
-      // this.registerForm.emit(this.registrationForm.value);
-      this.employeeeDetails = this.registrationForm.value
+      this.employeeDetails = this.registrationForm.value;
       this.dialogBox = true;
-    } else {
-      console.log('Form is invalid.');
     }
-
   }
 
   onDialogConfirmed() {
-    console.log("fai")
-
-    this.employees$ = this.store.pipe(select('employees', 'employees'));
-    this.store.dispatch(addEmployee({ employee: this.employeeeDetails }));
+    this.store.dispatch(addEmployee({ employee: this.employeeDetails }));
     this.dialogBox = false;
-    console.log("   this.employees$ ", this.employees$)
-
+    this.registrationForm.reset();
   }
+
   onDialogCancelled() {
     this.dialogBox = false;
-
   }
 }

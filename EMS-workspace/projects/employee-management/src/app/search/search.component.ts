@@ -1,10 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { searchEmployees } from 'projects/state/src/lib/employee.actions';
+import { EmployeeState } from 'projects/state/src/lib/employee.reducer';
+import { Observable } from 'rxjs';
+import { selectSearchResults } from 'projects/state/src/lib/employee.selectors';
+import { Employee } from 'projects/state/src/lib/employee.model';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
+  searchForm: FormGroup;
+  searchResults$: Observable<Employee[]>;
 
+  constructor(private fb: FormBuilder, private store: Store<{ employees: EmployeeState }>) {
+    this.searchForm = this.fb.group({
+      searchTerm: ['']
+    });
+    this.searchResults$ = this.store.select(selectSearchResults);
+  }
+
+  ngOnInit() {}
+
+  onSearch() {
+    const searchTerm = this.searchForm.get('searchTerm')?.value;
+    this.store.dispatch(searchEmployees({ searchTerm }));
+  }
 }

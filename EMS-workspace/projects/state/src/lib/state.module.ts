@@ -12,7 +12,7 @@ import { employeeReducer } from './employee.reducer';
     StateComponent
   ],
   imports: [
-    StoreModule.forFeature('employee',employeeReducer),
+    StoreModule.forFeature('employees',employeeReducer),
     EffectsModule.forFeature([EmployeeEffects])
   ],
   exports: [

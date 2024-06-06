@@ -1,1 +1,19 @@
-<p>search works!</p>
+<div class="search-container">
+  <h2>Search Employees</h2>
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <div class="search-button">
+      <div class="form-group">
+        <input type="text" formControlName="searchTerm" placeholder="Enter employee name" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary mt-2 search">Search</button>
+    </div>
+  </form>
+  <div class="search-results mt-4" *ngIf="searchResults$ | async as employees">
+    <h3>Search Results:</h3>
+    <ul class="list-group">
+      <li *ngFor="let employee of employees" class="list-group-item">
+        {{ employee.name }} - {{ employee.position }}
+      </li>
+    </ul>
+  </div>
+</div>

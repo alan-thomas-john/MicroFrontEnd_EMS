@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
-import { addEmployee, deleteEmployee, loadEmployees, loadEmployeesSuccess } from './employee.actions';
+import { addEmployee, deleteEmployeeFailure, deleteEmployeeSuccess, deleteEmployees, loadEmployees, loadEmployeesSuccess, searchEmployees } from './employee.actions';
 // import { StorageService } from './session-local-storage/dist/storage-service';
 import { Employee } from './employee.model';
 import { StorageService } from 'projects/session-local-storage/projects/storage-service/src/public-api';
@@ -28,25 +28,42 @@ export class EmployeeEffects {
         ), { dispatch: false }
     );
 
+    loadEmployees$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(loadEmployees),
+            mergeMap(() => {
+                const employees = this.storageService.getItem('employees') || [];
+                console.log('Loaded employees:', employees);
+                return of(loadEmployeesSuccess({ employees }));
+            })
+        )
+    );
+
     syncEmployees$ = createEffect(() =>
         this.actions$.pipe(
             ofType(loadEmployeesSuccess),
             tap(action => {
-                this.storageService.setItem('employees', action.employee);
+                console.log('Syncing employees to storage:', action.employees);
+                this.storageService.setItem('employees', action.employees);
             })
         ), { dispatch: false }
     );
 
-    // deleteEmployee$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(deleteEmployee),
-    //         tap(action => {
-    //             const employees: Employee[] = this.storageService.getItem('employees') || [];
-    //             const updatedEmployees = employees.filter(employee => employee.emailId !== action.emailId);
-    //             this.storageService.setItem('employees', updatedEmployees);
-    //         }),
-    //         map(action => deleteEmployeeSuccess({ emailId: action.emailId }))
-    //     )
-    // );
 
+      deleteEmployee$ = createEffect(() =>
+        this.actions$.pipe(
+          ofType(deleteEmployees),
+          mergeMap(action => {
+            try {
+              let employees: any[] = this.storageService.getItem('employees') || [];
+              employees = employees.filter((employee: any) => employee.emailId !== action.emailId);
+              this.storageService.setItem('employees', employees);
+              return of(deleteEmployeeSuccess({ emailId: action.emailId }));
+            } catch (error) {
+              return of(deleteEmployeeFailure({ error }));
+            }
+          })
+        )
+      );
+    
 }

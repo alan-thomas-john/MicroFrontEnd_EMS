@@ -27,8 +27,8 @@ import { employeeReducer } from 'projects/state/src/lib/employee.reducer';
     ReactiveFormsModule,
     StoreModule.forRoot(employeeReducer),
     EffectsModule.forRoot([]),
-  StateModule
-    
+    StateModule
+
 
   ],
   providers: [],

@@ -1,1 +1,9 @@
-<p>employee-list works!</p>
+<h2>Employee List</h2>
+<div *ngIf="employees$ | async as employees">
+    <ul>
+        <li *ngFor="let employee of employees">
+            {{employee.name}} - {{employee.emailId}} - {{employee.position}}
+            <button (click)="deleteEmployees(employee.emailId)">Delete</button>
+        </li>
+    </ul>
+</div>
