@@ -1,11 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Employee } from 'projects/state/src/lib/employee.model';
-import { addEmployee } from 'projects/state/src/lib/employee.actions';
+import { openDialog, confirmRegistration, cancelRegistration, addEmployee } from 'projects/state/src/lib/employee.actions';
 import { EmployeeState } from 'projects/state/src/lib/employee.reducer';
-import { selectAllEmployees } from 'projects/state/src/lib/employee.selectors';
+import { selectDialogOpen, selectEmployeeDetails } from 'projects/state/src/lib/employee.selectors';
 
 @Component({
   selector: 'app-registration-form',
@@ -13,12 +13,9 @@ import { selectAllEmployees } from 'projects/state/src/lib/employee.selectors';
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent implements OnInit {
-  employeeDetails: any;
   registrationForm!: FormGroup;
-  dialogBox: boolean = false;
-
-  @Output() registerForm = new EventEmitter<any>();
-  employees$: Observable<Employee[]> | undefined;
+  dialogOpen$: Observable<boolean> = of(false);
+  employeeDetails$: Observable<Employee | null> = of(null);
 
   constructor(
     private fb: FormBuilder,
@@ -32,23 +29,23 @@ export class RegistrationFormComponent implements OnInit {
       position: ['', Validators.required]
     });
 
-    this.employees$ = this.store.pipe(select(selectAllEmployees));
+    this.dialogOpen$ = this.store.pipe(select(selectDialogOpen));
+    this.employeeDetails$ = this.store.pipe(select(selectEmployeeDetails));
   }
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      this.employeeDetails = this.registrationForm.value;
-      this.dialogBox = true;
+      this.store.dispatch(openDialog({ employee: this.registrationForm.value }));
     }
   }
 
-  onDialogConfirmed() {
-    this.store.dispatch(addEmployee({ employee: this.employeeDetails }));
-    this.dialogBox = false;
+  onDialogConfirmed(employee: Employee) {
+    this.store.dispatch(confirmRegistration({ employee }));
+    this.store.dispatch(addEmployee({employee}))
     this.registrationForm.reset();
   }
 
   onDialogCancelled() {
-    this.dialogBox = false;
+    this.store.dispatch(cancelRegistration());
   }
 }

@@ -17,3 +17,13 @@ export const selectAllEmployees = createSelector(
     selectEmployeeState,
     (state: EmployeeState) => state.error
   );
+
+  export const selectDialogOpen = createSelector(
+    selectEmployeeState,
+    (state: EmployeeState) => state.dialogOpen
+  );
+  
+  export const selectEmployeeDetails = createSelector(
+    selectEmployeeState,
+    (state: EmployeeState) => state.employeeDetails
+  );

@@ -2,17 +2,17 @@ import { createAction, props } from '@ngrx/store';
 import { Employee } from './employee.model';
 
 export const addEmployee = createAction(
-    '[Employee] Add Employee',
-    props<{ employee: Employee }>()
+  '[Employee] Add Employee',
+  props<{ employee: Employee }>()
 );
 
 export const loadEmployees = createAction(
-    '[Employee] Load Employees',
+  '[Employee] Load Employees',
 
 );
 export const loadEmployeesSuccess = createAction(
-    '[Employee] Load Employees Success',
-    props<{ employees: Employee[] }>()
+  '[Employee] Load Employees Success',
+  props<{ employees: Employee[] }>()
 );
 // export const deleteEmployee = createAction(
 //     '[Employee] Delete Employee',
@@ -20,26 +20,37 @@ export const loadEmployeesSuccess = createAction(
 // );
 
 export const searchEmployees = createAction(
-    '[Employee] Search Employees',
-    props<{ searchTerm: string }>()
+  '[Employee] Search Employees',
+  props<{ searchTerm: string }>()
 );
 
 export const setSearchResults = createAction(
-    '[Employee] Set Search Results',
-    props<{ employees: Employee[] }>()
-  );
-  
+  '[Employee] Set Search Results',
+  props<{ employees: Employee[] }>()
+);
+
 export const deleteEmployees = createAction(
-    '[Employee] Delete Employee',
-    props<{ emailId: string }>()
+  '[Employee] Delete Employee',
+  props<{ emailId: string }>()
+);
+
+export const deleteEmployeeSuccess = createAction(
+  '[Employee] Delete Employee Success',
+  props<{ emailId: string }>()
+);
+
+export const deleteEmployeeFailure = createAction(
+  '[Employee] Delete Employee Failure',
+  props<{ error: any }>()
+);
+
+export const openDialog = createAction(
+  '[Employee] Open Dialog',
+   props<{ employee: Employee }>()
   );
-  
-  export const deleteEmployeeSuccess = createAction(
-    '[Employee] Delete Employee Success',
-    props<{ emailId: string }>()
+export const confirmRegistration = createAction(
+  '[Employee] Confirm Registration',
+   props<{ employee: Employee }>()
   );
-  
-  export const deleteEmployeeFailure = createAction(
-    '[Employee] Delete Employee Failure',
-    props<{ error: any }>()
-  );
+export const cancelRegistration = createAction(
+  '[Employee] Cancel Registration');

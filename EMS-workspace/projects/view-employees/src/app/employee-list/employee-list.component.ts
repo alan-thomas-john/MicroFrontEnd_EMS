@@ -4,6 +4,7 @@ import { StorageService } from 'projects/session-local-storage/projects/storage-
 import { deleteEmployees, loadEmployees } from 'projects/state/src/lib/employee.actions';
 import { Employee } from 'projects/state/src/lib/employee.model';
 import { EmployeeState } from 'projects/state/src/lib/employee.reducer';
+import { selectAllEmployees } from 'projects/state/src/lib/employee.selectors';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,7 +22,7 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit(): void {
 
     this.store.dispatch(loadEmployees());
-    this.employees$ = this.store.pipe(select('employees', 'employees'));
+    this.employees$ = this.store.pipe(select(selectAllEmployees));
     this.employees$.subscribe(employees => {
       console.log('Employees in component:', employees);
     })
