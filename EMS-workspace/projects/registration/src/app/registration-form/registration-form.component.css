@@ -42,8 +42,9 @@
 
 /* Primary button */
 .primary-btn {
-  background-color: #151815;
+  background-color: #4169e1;
   margin-left: 235px;
+  border: none;
 
 }
 
