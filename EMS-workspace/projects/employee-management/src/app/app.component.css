@@ -1,0 +1,52 @@
+/* Style for h1 */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Style for navigation */
+.nav {
+  /* display: flex; */
+  /* justify-content: center; */
+  margin-left:10%;
+
+}
+
+.nav-link {
+  background-color: #1f3420; /* Green */
+  height: 30px;
+  color: white;
+  padding: 4px 40px;
+  text-align: center;
+  font-size: 16px;
+  margin-right: 20px;
+  cursor: pointer;
+
+
+}
+
+.nav-link:hover {
+  background-color: white; /* Darker Green */
+  color: #1f3420;
+  font-weight: bold;
+}
+
+.alignment{
+  display:flex;
+  margin-left: 30%;
+}
+.buttons{
+  margin-left: 40%;
+}
+
+.router-outlet {
+    padding: 20px;
+}
+
+.button{
+  padding-bottom: 25px;
+  border-radius: 15px;
+  font-size: small;
+}
+

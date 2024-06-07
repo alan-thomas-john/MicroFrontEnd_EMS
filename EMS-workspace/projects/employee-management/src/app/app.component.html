@@ -1,17 +1,15 @@
-
-  
-      <h1>Employee Management Application</h1>
-      <!-- <nav class="nav">
-          <a routerLink="/search" class="nav-link">Search</a>&nbsp;&nbsp;
-          <a routerLink="/registrationForm" class="nav-link">Register</a>&nbsp;&nbsp;
-          <a routerLink="/" class="nav-link">Employee List</a>
-      </nav>
-   -->
-   <app-search></app-search>
-   <nav class="nav">
-    <!-- <button routerLink="/search" class="nav-link">Search</button> -->
-    <button routerLink="/registrationForm" class="nav-link">Register</button>
-    <button routerLink="/viewEmployee" class="nav-link">Employee List</button>
+<div class="frontnav">
+<div class="heading">
+<h1>Employee Management Application</h1>
+</div>
+<div class="alignment">
+  <div class="search"><app-search></app-search></div>
+  <nav class="nav">
+    <button routerLink="/registrationForm" class="nav-link button">Register</button>
+    <button routerLink="/viewEmployee" class="nav-link button">Employee List</button>
   </nav>
-     <router-outlet></router-outlet>
-  
+</div>
+<div class="router-outlet">
+  <router-outlet></router-outlet>
+</div>
+</div>

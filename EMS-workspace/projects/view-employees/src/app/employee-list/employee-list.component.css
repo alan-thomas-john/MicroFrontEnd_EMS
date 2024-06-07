@@ -1,0 +1,48 @@
+/* Style for h2 */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Style for employee list container */
+.employee-list {
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  margin-left: 27%;
+}
+
+/* Style for employee list */
+.employee-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.employee-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.employee-info {
+  font-size: 1.1rem;
+}
+
+/* Style for delete button */
+.delete-button {
+  background-color: #ff4c4c;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a;
+}

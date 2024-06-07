@@ -1,13 +1,4 @@
-/* Centering the container and setting max-width */
-.search-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
-    border-radius: 8px;
-    background: #eae9e9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-   
+
   /* Styling the title */
   .search-container h2 {
     text-align: center;
@@ -15,14 +6,14 @@
     margin-bottom: 1.5rem;
     font-family: 'Arial', sans-serif;
   }
-   
+
   /* Making the form look more elegant */
   .search-box {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
-   
+
   /* Styling the input field */
   .search-box input {
     padding: 0.75rem;
@@ -30,7 +21,7 @@
     border-radius: 4px;
     font-size: 1rem;
   }
-   
+
   /* Enhancing the button */
   .search-box button {
     padding: 0.75rem;
@@ -42,37 +33,40 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-   
+
   .search-box button:hover {
     background-color: #0056b3;
   }
-   
+
   /* Styling the results section */
   .search-results {
     margin-top: 2rem;
   }
-   
+
   .search-results h3 {
     color: #333;
     font-family: 'Arial', sans-serif;
     margin-bottom: 1rem;
   }
-   
+
   /* Styling the list of results */
   .search-results ul {
     list-style: none;
     padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: -40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 740px;
+
   }
-   
+
   .search-results li {
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 10px;
     margin-bottom: 0.5rem;
-    background-color: #f9f9f9;
     transition: background-color 0.3s;
+    border-bottom: 1px solid #ddd;
   }
-   
+
   .search-results li:hover {
     background-color: #f1f1f1;
   }
@@ -80,17 +74,21 @@
     margin-bottom: 20px;
   }
   .form-control{
-    width:100%;
-    margin-left:50%;
+    width:300px;
+    margin-left:40%;
     height: 100%;
   }
   .search-button{
     display: flex;
   }
   .search{
-    margin-left:30%;
+    margin-left:22%;
     color:white;
     background-color: rgb(11, 11, 11);
-    height: 300%;
+    height: 25px;
+    margin-top: 3px;
   }
-   
+
+  .list-group{
+    width: 1000px;
+  }
