@@ -50,7 +50,7 @@ export const openDialog = createAction(
   );
 export const confirmRegistration = createAction(
   '[Employee] Confirm Registration',
-   props<{ employee: Employee }>()
+   
   );
 export const cancelRegistration = createAction(
   '[Employee] Cancel Registration');

@@ -15,5 +15,4 @@
     <button type="submit" class="btn primary-btn">Register</button>
   </form>
 </div>
-<app-confirmation *ngIf="(dialogOpen$ | async)" [employeeData]="(employeeDetails$ | async)!" 
-(confirmed)="onDialogConfirmed($event)" (cancelled)="onDialogCancelled()"></app-confirmation>
+<app-confirmation *ngIf="(dialogOpen$ | async)"  ></app-confirmation>

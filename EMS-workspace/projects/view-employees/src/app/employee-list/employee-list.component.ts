@@ -26,13 +26,8 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadEmployees());
-<<<<<<< Updated upstream
     this.employees$ = this.store.pipe(select(selectAllEmployees));
     this.employees$.subscribe(employees => {
-=======
-    this.employees$ = this.store.pipe(select('employees', 'employees'));
-    this.employees$.subscribe((employees) => {
->>>>>>> Stashed changes
       console.log('Employees in component:', employees);
       if(employees.length!=0){
         this.isEmpty=false;

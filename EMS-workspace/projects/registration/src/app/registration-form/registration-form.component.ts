@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { Employee } from 'projects/state/src/lib/employee.model';
-import { openDialog, confirmRegistration, cancelRegistration, addEmployee } from 'projects/state/src/lib/employee.actions';
+import { openDialog, cancelRegistration, addEmployee } from 'projects/state/src/lib/employee.actions';
 import { EmployeeState } from 'projects/state/src/lib/employee.reducer';
-import { selectDialogOpen, selectEmployeeDetails } from 'projects/state/src/lib/employee.selectors';
+import { selectConfirmRegistration, selectDialogOpen, selectEmployeeDetails } from 'projects/state/src/lib/employee.selectors';
 
 @Component({
   selector: 'app-registration-form',
@@ -15,7 +15,7 @@ import { selectDialogOpen, selectEmployeeDetails } from 'projects/state/src/lib/
 export class RegistrationFormComponent implements OnInit {
   registrationForm!: FormGroup;
   dialogOpen$: Observable<boolean> = of(false);
-  employeeDetails$: Observable<Employee | null> = of(null);
+  confirmRegistration$: Observable<boolean> = of(false);
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +30,15 @@ export class RegistrationFormComponent implements OnInit {
     });
 
     this.dialogOpen$ = this.store.pipe(select(selectDialogOpen));
-    this.employeeDetails$ = this.store.pipe(select(selectEmployeeDetails));
+    this.confirmRegistration$ = this.store.pipe(select(selectConfirmRegistration));
+
+    this.confirmRegistration$.subscribe(confirmRegistration => {
+      if(confirmRegistration){
+        this.onDialogConfirmed()
+      }
+    });
+
+  
   }
 
   onSubmit() {
@@ -39,9 +47,10 @@ export class RegistrationFormComponent implements OnInit {
     }
   }
 
-  onDialogConfirmed(employee: Employee) {
-    this.store.dispatch(confirmRegistration({ employee }));
-    this.store.dispatch(addEmployee({employee}))
+  onDialogConfirmed() {
+//    this.store.dispatch(confirmRegistration({ employee: this.registrationForm.value }));
+    console.log("fai")
+    this.store.dispatch(addEmployee({employee: this.registrationForm.value}))
     this.registrationForm.reset();
   }
 

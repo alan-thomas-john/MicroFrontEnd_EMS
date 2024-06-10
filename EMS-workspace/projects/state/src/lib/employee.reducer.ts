@@ -12,6 +12,7 @@ export interface EmployeeState {
   loading: boolean;
   error: any;
   searchResults: Employee[];
+  confirmRegistration:boolean;
 
 }
 
@@ -22,13 +23,14 @@ export const initialState: EmployeeState = {
   loading: false,
   error: null,
   searchResults: [],
-
+  confirmRegistration:false,
 };
 
 export const employeeReducer = createReducer(
   initialState,
   on(addEmployee, (state, { employee }) => ({
     ...state,
+    confirmRegistration:false,
     employees: [...state.employees, employee]
   })),
   on(loadEmployeesSuccess, (state, { employees }) => ({
@@ -67,7 +69,7 @@ export const employeeReducer = createReducer(
   on(confirmRegistration, (state) => ({
     ...state,
     dialogOpen: false,
-    employeeDetails: null
+    confirmRegistration:true
   })),
   on(cancelRegistration, state => ({
     ...state,
