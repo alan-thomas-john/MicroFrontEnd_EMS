@@ -8,26 +8,27 @@ h1 {
 
 .nav {
 
-  margin-left:10%;
+  /* margin-left:10%; */
+  display: flex;
 
 }
 
 .nav-link {
-  background-color: #4169e1;
+  background-color: #3965e9;
   height: 30px;
   color: white;
-  padding: 4px 40px;
+  padding: 4px 26px;
   text-align: center;
   font-size: 16px;
-  margin-right: 20px;
+  margin-left: 3%;
   cursor: pointer;
-
+  width:180px;
 
 }
 
 .nav-link:hover {
-  background-color: white; /* Darker Green */
-  color: #4169e1;
+  background-color: rgba(19, 27, 246, 0.84); /* Darker Green */
+  color: #dadce4;
   font-weight: bold;
 }
 
@@ -35,9 +36,7 @@ h1 {
   display:flex;
   margin-left: 30%;
 }
-.buttons{
-  margin-left: 40%;
-}
+
 
 .router-outlet {
     padding: 20px;
@@ -49,4 +48,10 @@ h1 {
   font-size: small;
   border: none;
 }
+.search{
+  width: 60%;
+}
 
+@media only screen and (min-width: 412px) and (max-width:800px) {
+
+  }
