@@ -32,11 +32,14 @@ export class EmployeeListComponent implements OnInit {
       if(employees.length!=0){
         this.isEmpty=false;
       }
+      else{
+        alert("Something went wrong");
+      }
     });
   }
 
   deleteEmployees(emailId: string) {
     this.store.dispatch(deleteEmployees({ emailId }));
-   
+
   }
 }

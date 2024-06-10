@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { Employee } from 'projects/state/src/lib/employee.model';
 import { openDialog, cancelRegistration, addEmployee } from 'projects/state/src/lib/employee.actions';
 import { EmployeeState } from 'projects/state/src/lib/employee.reducer';
 import { selectConfirmRegistration, selectDialogOpen, selectEmployeeDetails } from 'projects/state/src/lib/employee.selectors';
@@ -38,18 +37,19 @@ export class RegistrationFormComponent implements OnInit {
       }
     });
 
-  
+
   }
 
   onSubmit() {
     if (this.registrationForm.valid) {
       this.store.dispatch(openDialog({ employee: this.registrationForm.value }));
     }
+    else{
+      alert("form not valid");
+    }
   }
 
   onDialogConfirmed() {
-//    this.store.dispatch(confirmRegistration({ employee: this.registrationForm.value }));
-    console.log("fai")
     this.store.dispatch(addEmployee({employee: this.registrationForm.value}))
     this.registrationForm.reset();
   }
