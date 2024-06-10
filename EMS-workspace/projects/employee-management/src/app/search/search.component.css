@@ -84,9 +84,11 @@
   .search{
     margin-left:22%;
     color:white;
-    background-color: rgb(11, 11, 11);
+    background-color:#4169e1;
     height: 25px;
     margin-top: 3px;
+    border: none;
+    border-radius: 15px;
   }
 
   .list-group{

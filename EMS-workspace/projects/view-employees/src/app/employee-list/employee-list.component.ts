@@ -33,11 +33,10 @@ export class EmployeeListComponent implements OnInit {
         this.isEmpty=false;
       }
     });
-
-
   }
 
   deleteEmployees(emailId: string) {
     this.store.dispatch(deleteEmployees({ emailId }));
+   
   }
 }
