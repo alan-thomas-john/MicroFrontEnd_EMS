@@ -6,10 +6,7 @@ export const addEmployee = createAction(
   props<{ employee: Employee }>()
 );
 
-export const loadEmployees = createAction(
-  '[Employee] Load Employees',
-
-);
+export const loadEmployees = createAction('[Employee] Load Employees');
 export const loadEmployeesSuccess = createAction(
   '[Employee] Load Employees Success',
   props<{ employees: Employee[] }>()
@@ -46,11 +43,13 @@ export const deleteEmployeeFailure = createAction(
 
 export const openDialog = createAction(
   '[Employee] Open Dialog',
-   props<{ employee: Employee }>()
-  );
+  props<{ employee: Employee }>()
+);
 export const confirmRegistration = createAction(
-  '[Employee] Confirm Registration',
-   
-  );
+  '[Employee] Confirm Registration'
+);
 export const cancelRegistration = createAction(
-  '[Employee] Cancel Registration');
+  '[Employee] Cancel Registration'
+);
+
+export const resetSearch = createAction('[Employee] Reset Search');

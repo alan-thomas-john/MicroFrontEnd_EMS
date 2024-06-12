@@ -2,16 +2,25 @@
   <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
     <div class="search-button">
       <div class="form-group">
-        <input type="text" formControlName="searchTerm" placeholder="Enter Employee Name" class="form-control placehold" />
+        <input type="text" formControlName="searchTerm" placeholder="Enter Employee Name" class="form-control" />
       </div>
-      <button type="submit" class="btn btn-primary mt-2 search">&nbsp;Search&nbsp;</button>
+      <button type="submit" class="btn btn-primary mt-2 search">Search</button>
+      <button type="reset" class="btn btn-primary mt-2 reset" (click)="reset()">clear</button>
     </div>
   </form>
-  <div class="search-results mt-4" *ngIf="searchResults$ | async as employees">
-    <ul class="list-group">
+  <div  class="employee-list" *ngIf="isData">
+No Data
+  </div>
+  <div  class="employee-list" *ngIf="!isData">
+
+
+
+  <div class="search-results mt-4" *ngIf="(searchResults$ |async ) as employees" >
+    <ul class="list-group"  >
       <li *ngFor="let employee of employees" class="list-group-item">
-       Name : {{ employee.name }}<br> Position : {{ employee.position }}
+        Name : {{ employee.name }}<br> Position : {{ employee.position }}
       </li>
     </ul>
+
   </div>
 </div>

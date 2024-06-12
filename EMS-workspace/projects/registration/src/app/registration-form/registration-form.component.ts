@@ -50,8 +50,11 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   onDialogConfirmed() {
-    this.store.dispatch(addEmployee({employee: this.registrationForm.value}))
-    this.registrationForm.reset();
+    if(this.registrationForm.valid)
+{
+  this.store.dispatch(addEmployee({employee: this.registrationForm.value}))
+  this.registrationForm.reset();
+}
   }
 
   onDialogCancelled() {

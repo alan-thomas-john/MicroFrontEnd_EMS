@@ -86,10 +86,9 @@
     display: flex;
   }
   .search{
-    margin-left:8.5%;
+    margin-left:9%;
     color:white;
     background-color:#3965e9;
-    height: 25px;
     border: none;
     height: 31px;
   }
@@ -102,6 +101,21 @@
 
   .list-group{
     width: 1000px;
+  }
+  .reset{
+    margin-left:4.5%;
+    color:white;
+    background-color:#ce2c10;
+    border: none;
+    height: 31px;
+  }
+
+  .search:hover{
+    cursor: pointer;
+  }
+
+  .reset:hover{
+    cursor: pointer;
   }
 
   @media (min-width: 1300px) and (max-width: 1400px) {
