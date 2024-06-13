@@ -86,7 +86,7 @@ export const employeeReducer = createReducer(
     dialogOpen: false,
     employeeDetails: null,
   })),
-  
+
   on(resetSearch, (state) => ({
     ...state,
     searchResults: [],

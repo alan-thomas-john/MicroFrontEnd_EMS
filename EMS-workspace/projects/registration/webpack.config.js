@@ -16,7 +16,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: false
-  },   
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -34,8 +34,8 @@ module.exports = {
         filename: "registerEntry.js",
         exposes: {
             './RegistrationFormModule': './projects/registration/src/app/registration-form/registration-form.module.ts',
-        },        
-        
+        },
+
         // For hosts (please adjust)
         // remotes: {
         //     "employeeManagement": "http://localhost:4200/remoteEntry.js",
@@ -44,16 +44,16 @@ module.exports = {
         // },
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@ngrx/store": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
           "@ngrx/effects": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
-
+          "@ngrx/store-devtools": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
           ...sharedMappings.getDescriptors()
         })
-        
+
     }),
     sharedMappings.getPlugin()
   ],

@@ -27,7 +27,7 @@ export class EmployeeEffects {
             })
         ), { dispatch: false }
     );
-    
+
 
     // loadEmployees$ = createEffect(() =>
     //     this.actions$.pipe(
@@ -66,5 +66,5 @@ export class EmployeeEffects {
           })
         )
       );
-    
+
 }
