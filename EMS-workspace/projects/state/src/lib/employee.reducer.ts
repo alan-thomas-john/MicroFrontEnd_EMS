@@ -4,8 +4,6 @@ import {
   cancelRegistration,
   confirmRegistration,
   deleteEmployeeSuccess,
-  loadEmployees,
-  loadEmployeesSuccess,
   openDialog,
   resetSearch,
   searchEmployees,
@@ -34,21 +32,25 @@ export const initialState: EmployeeState = {
   confirmRegistration: false,
 };
 
+const filterUniqueEmployees = (employees: Employee[]) => {
+  return employees.reduce((acc: Employee[], curr: Employee) => {
+    if (!acc.some(emp => emp.emailId === curr.emailId)) {
+      acc.push(curr);
+    }
+    return acc;
+  }, []);
+};
+
 export const employeeReducer = createReducer(
   initialState,
   on(addEmployee, (state, { employee }) => ({
     ...state,
     confirmRegistration: false,
-    employees: [...state.employees, employee],
+    employees: filterUniqueEmployees([...state.employees, employee]),
+    registrationError: null,
+
   })),
-  on(loadEmployeesSuccess, (state, { employees }) => ({
-    ...state,
-    employees: employees,
-  })),
-  // on(searchEmployeesSuccess, (state, { employees }) => ({
-  //     ...state,
-  //     searchResults: employees // Update search results
-  // })),
+  
   on(deleteEmployeeSuccess, (state, { emailId }) => ({
     ...state,
     employees: state.employees.filter(
@@ -57,7 +59,7 @@ export const employeeReducer = createReducer(
   })),
 
   on(searchEmployees, (state, { searchTerm }) => {
-    const filteredEmployees = state.employees.filter((employee) =>
+    const filteredEmployees = state.employees.filter(employee =>
       employee.name.toLowerCase().startsWith(searchTerm.toLowerCase())
     );
     return {
@@ -65,12 +67,7 @@ export const employeeReducer = createReducer(
       searchResults: filteredEmployees,
     };
   }),
-  on(loadEmployees, (state) => ({
-    ...state,
-    loading: true,
-    error: null,
-  })),
-
+  
   on(openDialog, (state, { employee }) => ({
     ...state,
     dialogOpen: true,
@@ -86,7 +83,7 @@ export const employeeReducer = createReducer(
     dialogOpen: false,
     employeeDetails: null,
   })),
-  
+
   on(resetSearch, (state) => ({
     ...state,
     searchResults: [],

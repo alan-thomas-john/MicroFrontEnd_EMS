@@ -6,15 +6,7 @@ export const addEmployee = createAction(
   props<{ employee: Employee }>()
 );
 
-export const loadEmployees = createAction('[Employee] Load Employees');
-export const loadEmployeesSuccess = createAction(
-  '[Employee] Load Employees Success',
-  props<{ employees: Employee[] }>()
-);
-// export const deleteEmployee = createAction(
-//     '[Employee] Delete Employee',
-//     props<{ emailId: string }>()
-// );
+
 
 export const searchEmployees = createAction(
   '[Employee] Search Employees',

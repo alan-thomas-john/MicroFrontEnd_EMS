@@ -1,6 +1,5 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { EmployeeState } from './employee.reducer';
-import { state } from '@angular/animations';
 
 export const selectEmployeeState = createFeatureSelector<EmployeeState>('employees');
 

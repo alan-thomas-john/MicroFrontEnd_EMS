@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { StorageService } from 'projects/session-local-storage/projects/storage-service/src/public-api';
 import {
   deleteEmployees,
-  loadEmployees,
 } from 'projects/state/src/lib/employee.actions';
 import { Employee } from 'projects/state/src/lib/employee.model';
 import { EmployeeState } from 'projects/state/src/lib/employee.reducer';
@@ -21,11 +19,9 @@ export class EmployeeListComponent implements OnInit {
   isEmpty: boolean = true;
   constructor(
     private store: Store<{ employees: EmployeeState }>,
-    private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadEmployees());
     this.employees$ = this.store.pipe(select(selectAllEmployees));
     this.employees$.subscribe(employees => {
       console.log('Employees in component:', employees);
@@ -33,6 +29,7 @@ export class EmployeeListComponent implements OnInit {
         this.isEmpty=false;
       }
     });
+    console.log("hello")
   }
 
   deleteEmployees(emailId: string) {
