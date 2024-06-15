@@ -26,7 +26,7 @@ export class EmployeeEffects {
             })
         ), { dispatch: false }
     );
-    
+
 
 
       deleteEmployee$ = createEffect(() =>
@@ -44,5 +44,5 @@ export class EmployeeEffects {
           })
         )
       );
-    
+
 }

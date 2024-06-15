@@ -19,7 +19,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   declarations: [
     AppComponent,
     //RegistrationFormComponent,
-    //ConfirmationComponent
+    //ConfirmationComponent,
+
   ],
   imports: [
     BrowserModule,
